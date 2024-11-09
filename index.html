@@ -1,118 +1,111 @@
 <!DOCTYPE html>
 <html style="height:100%"  lang="en" >
 	<head>
-		<!-- Meta data for SEO etc -->
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<link rel="icon"  href="favicon.ico">
-		<link rel="manifest" href="/manifest.json">
-
-		<meta name="description" content="Scribbler is a notebook, online compiler for experimenting in JavaScript. Play with html and javascript using simple interface (without servers and backend deployment). All the computation happens in your browser.">
-		<script>global=globalThis</script>
-		<title>Scribbler App for JavaScript Notebook and Online Compiler</title>
-
-		<!-- Styling using pico.css and some custome css -->
-		<link rel="stylesheet" href="css/pico.min.css">
-		<link rel="stylesheet" href="css/style.css">
-
-
-		<!-- Controllers and libs -->
-		<script src="js/libs.js"></script> <!-- libs for some functionality -->
-		<script src="js/controller.js"></script> <!-- Controls the UI -->
-		<script src="js/github.js"></script> <!-- Functions for pushing and pulling from/to Github -->
-		<script src="js/local-storage.js"></script> <!-- Functions for storing and retreiving JSNBs in indexddb -->
-		<script src="js/modal.js"></script> <!-- Modal/popup handling -->
-		<script src="js/ai-coder.js"></script> <!-- Handling AI coding using WebLLM -->
-
-
-	
+		 <!-- Meta data for SEO etc -->
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1">
+	    <link rel="icon" href="favicon.ico">
+	    <link rel="manifest" href="/manifest.json">
+	    <meta name="description" content="ஸ்கிரிப்பிளர் ஒரு நோட்புக், ஜாவாஸ்கிரிப்ட்டில் சோதனை செய்ய பயன்படும் ஆன்லைன் கம்பைலர். எளிய இடைமுகத்தை பயன்படுத்தி ஹ்டிஎம்எல் மற்றும் ஜாவாஸ்கிரிப்ட்டை பயன்படுத்தவும் (சர்வர்கள் மற்றும் பேக்எண்ட் நிறுவுதல் இல்லை). அனைத்து கணக்கியலும் உங்கள் ப்ரவுசரில் செய்யப்படுகிறது.">
+	    <script>global=globalThis</script>
+	    <title>ஜாவாஸ்கிரிப்ட் நோட்புக் மற்றும் ஆன்லைன் கம்பைலருக்கான ஸ்கிரிப்பிளர் பயன்பாடு</title>
+	    <!-- Styling using pico.css and some custom css -->
+	    <link rel="stylesheet" href="css/pico.min.css">
+	    <link rel="stylesheet" href="css/style.css">
+	    <!-- Controllers and libs -->
+	    <script src="js/libs.js"></script>
+	    <!-- libs for some functionality -->
+	    <script src="js/controller.js"></script>
+	    <!-- Controls the UI -->
+	    <script src="js/github.js"></script>
+	    <!-- Functions for pushing and pulling from/to Github -->
+	    <script src="js/local-storage.js"></script>
+	    <!-- Functions for storing and retrieving JSNBs in indexddb -->
+	    <script src="js/modal.js"></script>
+	    <!-- Modal/popup handling -->
+	    <script src="js/ai-coder.js"></script>
+	    <!-- Handling AI coding using WebLLM -->
+		
 	</head>
   <body style="height:100%" >
-	<nav id="menu"> <!-- Menu bar -->
-	  <ul style="width:50%;float:left">
-	    <li id="logo"><img src='images/logo2.png' id=""/></li>
-	    <li >
-	      <details role="list" dir="ltr">
-	      <summary tabindex="0" aria-haspopup="listbox">File</summary>
-	      <ul role="listbox">
-	        <li><a href="./#" target="_blank">New Blank NB</a></li>
-	        <li><a data-target="fileNamesModal" onClick="toggleModal(event);openFileNamesModal()" >Open Local File (Ctrl-O)</a></li>
-		<li><a onclick="saveLocalFile()">Save Locally (Ctrl-S)</a><hr></li>
-		<li><a onclick="load_file_click()">Upload NB</a></li>
-	        <li><a onclick="download_nb()">Download NB</a><hr></li>
-	        <li><a data-target="git-import-export" onClick="toggleModal(event)">GitHub (Gtr-G)</a></li>
-	        <li><a href="#"  onclick="event.preventDefault();shareBtn()">Share/Publish</a><hr></li>
-	        <li><a onclick="download_html('nb')">Download as HTML (NB-view)</a></li>
-	        <li><a onclick="download_html('output')">Download as HTML (Only output)</a></li>
-	        <li><a onclick="download_html('html+js')">Download as HTML (HTML+JS)</a></li>
-	        <li><a onclick="download_js()">Download as JS</a><hr></li>
+	<nav id="menu">
+    <!-- பட்டை -->
+    <ul style="width:50%;float:left">
+        <li id="logo"><img src='images/logo2.png' id=""/></li>
+        <li >
+            <details role="list" dir="ltr">
+                <summary tabindex="0" aria-haspopup="listbox">கோப்பு</summary>
+                <ul role="listbox">
+                    <li><a href="./#" target="_blank">புதிய வெற்று நோட்புக்</a></li>
+                    <li><a data-target="fileNamesModal" onClick="toggleModal(event);openFileNamesModal()" >உள்ளூர் கோப்பைத் திறுக்கவும் (Ctrl-O)</a></li>
+                    <li><a onclick="saveLocalFile()">உள்ளூரில் சேமிக்கவும் (Ctrl-S)</a><hr></li>
+                    <li><a onclick="load_file_click()">நோட்புக்கைப் பதிவேற்று</a></li>
+                    <li><a onclick="download_nb()">நோட்புக்கை பதிவிறக்கு</a><hr></li>
+                    <li><a data-target="git-import-export" onClick="toggleModal(event)">கிட்ஹப் (Gtr-G)</a></li>
+                    <li><a href="#" onclick="event.preventDefault();shareBtn()">பகிர்/வெளியிடு</a><hr></li>
+                    <li><a onclick="download_html('nb')">எச்டிஎம்எல் ஆக பதிவிறக்கு (NB-பார்வை)</a></li>
+                    <li><a onclick="download_html('output')">எச்டிஎம்எல் ஆக பதிவிறக்கு (வெளியீடு மட்டும்)</a></li>
+                    <li><a onclick="download_html('html+js')">எச்டிஎம்எல் + ஜாவாஸ்கிரிப்ட் ஆக பதிவிறக்கு</a></li>
+                    <li><a onclick="download_js()">ஜாவாஸ்கிரிப்ட் ஆக பதிவிறக்கு</a><hr></li>
+                </ul>
+            </details>
+        </li>
+        <li role="list" dir="ltr">
+            <details role="list" dir="ltr">
+                <summary tabindex="0" aria-haspopup="listbox">திருத்து</summary>
+                <ul role="listbox">
+                    <li><a onclick="insert_cell('code')">குறியீட்டு அட்டையைச் செருக</a></li>
+                    <li><a onclick="insert_cell('html')">ஆவண அட்டையைச் செருக</a></li>
+                    <li><a onclick="insert_cell('style')">வடிவமைப்பு அட்டையைச் செருக</a><hr></li>
+                    <li><a data-target="options" onClick="toggleModal(event)">விருப்பங்கள்</li>
+                    <li><a onclick="event.preventDefault();break_sandbox()" >நோட்புக்கையை நம்பு</a></li>
+                    
+	            <li><a href="./secrets.html" target="_blank">Secrets</a></li>
 	        
 	      </ul>
 	      </details>
 	    </li>
-	    <li role="list" dir="ltr">
-	    	<details role="list" dir="ltr">
-	      <summary tabindex="0" aria-haspopup="listbox">Edit</summary>
-	      <ul role="listbox">
-			
-	        <li><a onclick="insert_cell('code')">Insert code cell</a></li>
-	        <li><a onclick="insert_cell('html')">Insert doc cell</a></li>
-	        <li><a onclick="insert_cell('style')">Insert style cell</a><hr></li>
-	        <li><a data-target="options" onClick="toggleModal(event)">Options</li>
-	        <li><a onclick="event.preventDefault();break_sandbox()" >Trust the NB</a></li>
-	        <li><a href="./secrets.html" target="_blank">Secrets</a></li>
-	        
-	      </ul>
-	      </details>
-	    </li>
+			<li role="list" dir="ltr">
+		    <details role="list" dir="ltr">
+		        <summary tabindex="0" aria-haspopup="listbox">கற்றல்</summary>
+		        <ul role="listbox" id="AI-Models"> 
+		        </ul>
+		    </details>
+		</li>
 		<li role="list" dir="ltr">
-	      <details role="list" dir="ltr">
-	      <summary tabindex="0" aria-haspopup="listbox">AI</summary>
-	      <ul role="listbox" id="AI-Models">
-			
-	      </ul>
-	      </details>
-	    </li>
-		
-	   <li role="list" dir="ltr">
-	    	<details role="list" dir="ltr">
-	      <summary tabindex="0" aria-haspopup="listbox">Run</summary>
-	      <ul role="listbox">
-	        <li><a onclick="run_all()">Run all</a></li>
-
-	      </ul>
-	      </details>
-	    </li>
-	   
-	    <li role="list" dir="ltr">
-	    <details role="list" dir="ltr">
-	      <summary tabindex="0" aria-haspopup="listbox">Help</summary>
-	      <ul role="listbox">
-	        <li><a href='https://scribbler.live/docs' target='_blank'>Docs</a></li>
-	        <li><a href="https://scribbler.live/samples.html" target='_blank'>Gallery</a></li>
-	        <li><a href="https://scribbler.live/tutorials/" target='_blank'>Tutorials</a></li>
-	        <li>
-	   	<a href="https://github.com/gopi-suvanam/scribbler/issues/new/choose" target="_blank" >Reach out</a> 
-	    </li>
-	    <li>
-	   	<a href="https://github.com/gopi-suvanam/jsnb/" target="_blank" >Source</a> 
-	    </li>
-	      </ul>
-	      </details>
-	    </li>
-	    
-	    <li>
-	    	<summary tabindex="0" aria-haspopup="listbox" style="font-size:14px;" role="button" onclick="event.preventDefault();shareBtn()">
-	    Share</summary>
-	    </li>
-	  </ul>
-	  
-	  
-	  <div id="welcome" style="float:right;width:50%;">
-	    <p class="secondary" style="display:inline;float:right;margin-right:5px"  id='username'></p>
-	    <p style="display:inline;float:right" class="secondary">Welcome&nbsp;</p>
-	    
-	  </div>
+		    <details role="list" dir="ltr">
+		        <summary tabindex="0" aria-haspopup="listbox">இயக்கு</summary>
+		        <ul role="listbox">
+		            <li><a onclick="run_all()">அனைத்தையும் இயக்கு</a></li>
+		        </ul>
+		    </details>
+		</li>
+		<li role="list" dir="ltr">
+		    <details role="list" dir="ltr">
+		        <summary tabindex="0" aria-haspopup="listbox">உதவி</summary>
+		        <ul role="listbox">
+		            <li><a href='(link unavailable)' target='_blank'>ஆவணங்கள்</a></li>
+		            <li><a href="(link unavailable)" target='_blank'>கேலரி</a></li>
+		            <li><a href="(link unavailable)" target='_blank'>பயிற்சிகள்</a></li>
+		            <li> 
+		                <a href="(link unavailable)" target="_blank" >தொடர்பு கொள்ளு</a> 
+		            </li>
+		            <li> 
+		                <a href="(link unavailable)" target="_blank" >மூலம்</a> 
+		            </li>
+		        </ul>
+		    </details>
+		</li>
+		<li> 
+		    <summary tabindex="0" aria-haspopup="listbox" style="font-size:14px;" role="button" onclick="event.preventDefault();shareBtn()"> 
+		        பகிர்
+		    </summary> 
+		</li>
+		</ul>
+		<div id="welcome" style="float:right;width:50%;">
+		    <p class="secondary" style="display:inline;float:right;margin-right:5px" id='username'></p> 
+		    <p style="display:inline;float:right" class="secondary">வணக்கம்&nbsp;</p> 
+		</div>
 	</nav>
 	<div class="container" id="sub-menu" style='display:flex;overflow:hidden'>
 	    <div style="floght:left;width:50%"><a id="nb_name" contentEditable="true">Loading a note book...</a> 
